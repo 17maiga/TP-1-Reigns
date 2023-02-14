@@ -10,6 +10,7 @@ public enum Genre {
     /**
      * Genre masculin
      */
+
     ROI,
     /**
      * Genre féminin
@@ -21,9 +22,7 @@ public enum Genre {
      *
      * @return une chaîne de caractères indiquant "Long règne au roi" ou "Long règne à la reine"
      */
-    public String longRegne(){
-        if(this==ROI)
-            return "Long règne au roi ";
-        return "Long règne à la reine";
+    public String getMessageRegne() {
+        return this == ROI ? "Long règne au roi" : "Long règne à la reine";
     }
 }
