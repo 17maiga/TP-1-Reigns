@@ -1,10 +1,10 @@
-package main.fixed.jauges;
+package main.fixed.gauge;
 
-public class JaugePeuple extends Jauge {
+public class PeopleGauge extends Gauge {
     /**
      * Crée une nouvelle jauge avec le nom et la valeur spécifiés.
      */
-    public JaugePeuple() {
+    public PeopleGauge() {
         super("Peuple");
     }
 }
