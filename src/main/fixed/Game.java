@@ -1,54 +1,45 @@
 package main.fixed;
 
 import main.Genre;
-import main.fixed.gauge.ArmyGauge;
-import main.fixed.gauge.ClergyGauge;
-import main.fixed.gauge.FinanceGauge;
-import main.fixed.gauge.PeopleGauge;
+import main.fixed.gauge.GaugePool;
+import main.fixed.question.QuestionPool;
 
 public class Game {
+
+    private static Game instance;
     protected String name;
     protected Genre genre;
 
-    protected ClergyGauge clergyGauge;
-    protected PeopleGauge peopleGauge;
-    protected ArmyGauge armyGauge;
-    protected FinanceGauge financeGauge;
-
+    private final GaugePool gauges;
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
      * puis initialise les jauges de Clergé, Peuple, Armée et Finances.
      *
-     * @param name  Le nom du personnage
-     * @param genre Le genre du personnage
+     * @param name   Le nom du personnage
+     * @param genre  Le genre du personnage
      */
-    public Game(String name, Genre genre) {
+    private Game(String name, Genre genre) {
         this.name = name;
         this.genre = genre;
-
-        // Initialisation des jauges
-        clergyGauge = new ClergyGauge();
-        peopleGauge = new PeopleGauge();
-        armyGauge = new ArmyGauge();
-        financeGauge = new FinanceGauge();
+        this.gauges = new GaugePool();
     }
 
-    /**
-     * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
-     */
-    public void printGauge() {
-        System.out.println(clergyGauge);
-        System.out.println(peopleGauge);
-        System.out.println(armyGauge);
-        System.out.println(financeGauge);
+    public GaugePool getGauges() {
+        return gauges;
     }
 
-    /**
-     * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
-     *
-     * @return true si le jeu est fini, false sinon
-     */
-    public boolean endOfGame() {
-        return armyGauge.isEmptyOrFull() || peopleGauge.isEmptyOrFull() || armyGauge.isEmptyOrFull() || financeGauge.isEmptyOrFull();
+    public static Game getInstance() {
+        if (instance == null)
+            instance = new Game("", Genre.REINE);
+        return instance;
+    }
+
+    public static void main(String[] args) {
+        Game game = getInstance();
+
+
+
+        QuestionPool questionPool = QuestionPool.getInstance();
+        System.out.println(questionPool);
     }
 }
