@@ -1,61 +1,46 @@
 package main.fixed;
 
 import main.Genre;
-import main.fixed.jauges.*;
+import main.fixed.gauge.ArmyGauge;
+import main.fixed.gauge.ClergyGauge;
+import main.fixed.gauge.FinanceGauge;
+import main.fixed.gauge.PeopleGauge;
 
 public class Game {
-    /**
-     * Le nom du personnage
-     */
-    protected String nom;
-    /**
-     * Le genre du personnage
-     */
+    protected String name;
     protected Genre genre;
-    /**
-     * La jauge de Clergé
-     */
-    protected JaugeClerge jaugeClerge;
-    /**
-     * La jauge de Peuple
-     */
-    protected JaugePeuple jaugePeuple;
-    /**
-     * La jauge d'Armée
-     */
-    protected JaugeArmee jaugeArmee;
-    /**
-     * La jauge de Finances
-     */
-    protected JaugeFinance jaugeFinance;
+
+    protected ClergyGauge clergyGauge;
+    protected PeopleGauge peopleGauge;
+    protected ArmyGauge armyGauge;
+    protected FinanceGauge financeGauge;
 
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
      * puis initialise les jauges de Clergé, Peuple, Armée et Finances.
      *
-     * @param nom Le nom du personnage
+     * @param name  Le nom du personnage
      * @param genre Le genre du personnage
      */
-    public Game(String nom, Genre genre) {
-        this.nom = nom;
+    public Game(String name, Genre genre) {
+        this.name = name;
         this.genre = genre;
 
         // Initialisation des jauges
-        jaugeClerge = new JaugeClerge();
-        jaugePeuple = new JaugePeuple();
-        jaugeArmee = new JaugeArmee();
-        jaugeFinance = new JaugeFinance();
+        clergyGauge = new ClergyGauge();
+        peopleGauge = new PeopleGauge();
+        armyGauge = new ArmyGauge();
+        financeGauge = new FinanceGauge();
     }
 
     /**
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
      */
     public void printGauge() {
-        System.out.println(jaugeClerge);
-        System.out.println(jaugePeuple);
-        System.out.println(jaugeArmee);
-        System.out.println(jaugeFinance);
-        System.out.println();
+        System.out.println(clergyGauge);
+        System.out.println(peopleGauge);
+        System.out.println(armyGauge);
+        System.out.println(financeGauge);
     }
 
     /**
@@ -63,10 +48,7 @@ public class Game {
      *
      * @return true si le jeu est fini, false sinon
      */
-    public boolean endOfGame(){
-        return jaugeArmee.isEmptyOrFull()
-                || jaugePeuple.isEmptyOrFull()
-                || jaugeArmee.isEmptyOrFull()
-                || jaugeFinance.isEmptyOrFull();
+    public boolean endOfGame() {
+        return armyGauge.isEmptyOrFull() || peopleGauge.isEmptyOrFull() || armyGauge.isEmptyOrFull() || financeGauge.isEmptyOrFull();
     }
 }

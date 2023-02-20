@@ -1,11 +1,11 @@
-package main.fixed.jauges;
+package main.fixed.gauge;
 
-public class JaugeFinance extends Jauge {
+public class FinanceGauge extends Gauge {
     /**
      * Crée une nouvelle jauge avec le nom et la valeur spécifiés.
      *
      */
-    public JaugeFinance() {
+    public FinanceGauge() {
         super("Finance");
     }
 }
