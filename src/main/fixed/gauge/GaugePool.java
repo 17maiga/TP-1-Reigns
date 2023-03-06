@@ -16,29 +16,24 @@ public class GaugePool extends ArrayList<Gauge> {
     }
 
     public Gauge getGauge(String name) {
-        for (Gauge gauge : this) {
-            if (gauge.getName().equals(name)) {
+        for (Gauge gauge : this)
+            if (gauge.getName().equals(name))
                 return gauge;
-            }
-        }
         return null;
     }
 
-    public void printGauges() {
-        for (Gauge gauge : this) {
+    public void displayGauges() {
+        for (Gauge gauge : this)
             System.out.println(gauge);
-        }
     }
 
     /**
      * Check whether the game should end or not.
      */
     public boolean endOfGame() {
-        for (Gauge gauge : this) {
-            if (gauge.isEmptyOrFull()) {
+        for (Gauge gauge : this)
+            if (gauge.isEmptyOrFull())
                 return true;
-            }
-        }
         return false;
     }
 }

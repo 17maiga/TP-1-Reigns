@@ -1,27 +1,27 @@
 package main.fixed;
 
-import main.Genre;
 import main.fixed.gauge.GaugePool;
+import main.fixed.question.Effect;
+import main.fixed.question.Question;
 import main.fixed.question.QuestionPool;
+
+import java.util.List;
 
 public class Game {
 
     private static Game instance;
-    protected String name;
-    protected Genre genre;
-
+    private final Player player;
     private final GaugePool gauges;
+    private final QuestionPool questions;
+
     /**
-     * Crée un nouveau personnage avec le nom et le genre spécifiés,
-     * puis initialise les jauges de Clergé, Peuple, Armée et Finances.
-     *
-     * @param name   Le nom du personnage
-     * @param genre  Le genre du personnage
+     * Creates a new player and initialises the gauges and questions.
      */
-    private Game(String name, Genre genre) {
-        this.name = name;
-        this.genre = genre;
+    private Game() {
+        System.out.println("Creating character...");
+        this.player = Player.getInstance();
         this.gauges = new GaugePool();
+        this.questions = QuestionPool.getInstance();
     }
 
     public GaugePool getGauges() {
@@ -30,16 +30,26 @@ public class Game {
 
     public static Game getInstance() {
         if (instance == null)
-            instance = new Game("", Genre.REINE);
+            instance = new Game();
         return instance;
     }
 
+    public void run() {
+        int turnCount = 0;
+        while (!gauges.endOfGame()) {
+            turnCount++;
+            gauges.displayGauges();
+            Question question = questions.getRandomQuestion();
+            List<Effect> effects = question.ask();
+            for (Effect effect : effects)
+                effect.applyEffect();
+        }
+        System.out.println(player.getName() + " lost! Their reign lasted " + turnCount + " turns.");
+    }
+
     public static void main(String[] args) {
+        System.out.println("Welcome to Reigns");
         Game game = getInstance();
-
-
-
-        QuestionPool questionPool = QuestionPool.getInstance();
-        System.out.println(questionPool);
+        game.run();
     }
 }

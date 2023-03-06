@@ -1,10 +1,16 @@
 package main.fixed.question;
 
 import com.google.gson.Gson;
+import main.fixed.utils.OS;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class QuestionPool extends ArrayList<Question> {
+
+    private static final String JSON_FILE_PATH = OS.getConfigFolder() + "questions.json";
+
     private static QuestionPool instance;
 
     public QuestionPool() {
@@ -12,15 +18,23 @@ public class QuestionPool extends ArrayList<Question> {
 
     public static QuestionPool getInstance() {
         if (instance == null) {
-            instance = new Gson().fromJson("[{\"question\":\"Ma question\",\"left\":[{\"gaugeName\":\"Army\",\"value\":5}],\"right\":[]}]", QuestionPool.class);
-            instance.fetchGauges();
+            try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
+                instance = new Gson().fromJson(reader, QuestionPool.class);
+                instance.fetchGauges();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return instance;
     }
 
     private void fetchGauges() {
-        for (Question question : this) {
+        for (Question question : this)
             question.fetchGauges();
-        }
+    }
+
+    public Question getRandomQuestion() {
+        int questionIndex = (int) (Math.random() * this.size());
+        return this.get(questionIndex);
     }
 }

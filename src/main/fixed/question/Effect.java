@@ -1,6 +1,9 @@
-package main.fixed;
+package main.fixed.question;
 
+import main.fixed.Game;
 import main.fixed.gauge.Gauge;
+
+import java.util.List;
 
 public class Effect {
     private final String gaugeName;
@@ -21,7 +24,7 @@ public class Effect {
         return value;
     }
 
-    public void applyEffect(Gauge gauge) {
+    public void applyEffect() {
         gauge.setValue(gauge.getValue() + this.value);
     }
 
@@ -32,5 +35,13 @@ public class Effect {
     @Override
     public String toString() {
         return "Gauge " + gauge.getName() + ": " + ((value > 0) ? "+" : "") + value;
+    }
+
+    public static String displayEffects(List<Effect> effects) {
+        StringBuilder result = new StringBuilder();
+        for (Effect effect : effects) {
+            result.append(effect.toString()).append("; ");
+        }
+        return result.toString();
     }
 }
