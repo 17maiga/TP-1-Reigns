@@ -1,4 +1,4 @@
-package main.fixed.utils;
+package main.utils;
 
 public class OS {
     public static String getConfigFolder() {

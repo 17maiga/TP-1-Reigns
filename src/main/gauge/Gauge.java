@@ -1,4 +1,4 @@
-package main.fixed.gauge;
+package main.gauge;
 
 /**
  * Represents a gauge with a name and a value

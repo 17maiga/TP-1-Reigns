@@ -1,8 +1,8 @@
-package main.fixed.question;
+package main.question;
 
-import main.fixed.Game;
-import main.fixed.gauge.Gauge;
-import main.fixed.gauge.GaugeType;
+import main.Game;
+import main.gauge.Gauge;
+import main.gauge.GaugeType;
 
 import java.util.List;
 

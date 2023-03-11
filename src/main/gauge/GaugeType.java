@@ -1,4 +1,4 @@
-package main.fixed.gauge;
+package main.gauge;
 
 public enum GaugeType {
     ARMY("Army"),

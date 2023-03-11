@@ -1,4 +1,4 @@
-package main.fixed.question;
+package main.question;
 
 import java.util.List;
 import java.util.Scanner;

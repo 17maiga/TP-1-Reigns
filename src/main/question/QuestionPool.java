@@ -1,7 +1,7 @@
-package main.fixed.question;
+package main.question;
 
 import com.google.gson.Gson;
-import main.fixed.utils.OS;
+import main.utils.OS;
 
 import java.io.FileReader;
 import java.io.IOException;

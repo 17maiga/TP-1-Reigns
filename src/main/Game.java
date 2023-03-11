@@ -1,9 +1,9 @@
-package main.fixed;
+package main;
 
-import main.fixed.gauge.GaugePool;
-import main.fixed.question.Effect;
-import main.fixed.question.Question;
-import main.fixed.question.QuestionPool;
+import main.gauge.GaugePool;
+import main.question.Effect;
+import main.question.Question;
+import main.question.QuestionPool;
 
 import java.util.List;
 

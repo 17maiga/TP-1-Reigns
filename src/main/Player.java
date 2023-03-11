@@ -1,4 +1,4 @@
-package main.fixed;
+package main;
 
 import java.util.Scanner;
 
@@ -22,10 +22,6 @@ public class Player {
     public static Player getInstance() {
         if (instance == null) instance = new Player();
         return instance;
-    }
-
-    public Gender getGender() {
-        return gender;
     }
 
     public String getName() {
