@@ -15,15 +15,17 @@ public class Game {
     private final GaugePool gauges;
     private final QuestionPool questions;
 
-    /**
-     * Creates a new player and initialises the gauges and questions.
-     */
-    private Game() {
-        System.out.println("Creating character...");
-        this.player = Player.getInstance();
-        this.gauges = new GaugePool();
-        this.questions = QuestionPool.getInstance();
-    }
+  /**
+   * <b>Creates a new game.</b>
+   *
+   * <p>Initialises the player, gauges and questions.
+   */
+  private Game() {
+    System.out.println("Creating character...");
+    this.player = Player.getInstance();
+    this.gauges = GaugePool.getInstance();
+    this.questions = QuestionPool.getInstance();
+  }
 
     public static Game getInstance() {
         if (instance == null)

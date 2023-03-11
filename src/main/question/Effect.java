@@ -2,6 +2,7 @@ package main.question;
 
 import main.Game;
 import main.gauge.Gauge;
+import main.gauge.GaugePool;
 import main.gauge.GaugeType;
 
 import java.util.List;
@@ -23,10 +24,11 @@ public class Effect {
         return result.toString();
     }
 
-    public void applyEffect() {
-        Gauge gauge = Game.getInstance().getGauges().getGauge(gaugeType);
-        gauge.setValue(gauge.getValue() + this.value);
-    }
+  /** <b>Applies the effect on the target gauge.</b> */
+  public void applyEffect() {
+    Gauge gauge = GaugePool.getInstance().getGauge(gaugeType);
+    gauge.setValue(gauge.getValue() + this.value);
+  }
 
     @Override
     public String toString() {

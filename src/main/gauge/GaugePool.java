@@ -4,15 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GaugePool extends ArrayList<Gauge> {
-  private static final List<Gauge> GAUGES =
-      List.of(
-          new Gauge(GaugeType.ARMY),
-          new Gauge(GaugeType.CLERGY),
-          new Gauge(GaugeType.FINANCE),
-          new Gauge(GaugeType.PEOPLE));
+  /** <b>Singleton instance.</b> */
+  private static GaugePool instance;
 
   public GaugePool() {
-    addAll(GAUGES);
+    for (GaugeType type : GaugeType.values()) add(new Gauge(type));
+  }
+
+  /**
+   * <b>Gets the singleton instance.</b>
+   *
+   * @return The singleton instance.
+   */
+  public static GaugePool getInstance() {
+    if (instance == null) instance = new GaugePool();
+    return instance;
   }
 
   public Gauge getGauge(GaugeType type) {
