@@ -1,5 +1,6 @@
 package main;
 
+import main.gauge.Gauge;
 import main.gauge.GaugePool;
 import main.player.Player;
 import main.question.Effect;
@@ -33,15 +34,15 @@ public class Game {
         return instance;
     }
 
-    public static void main(String[] args) {
-        System.out.println("Welcome to Reigns");
-        Game game = getInstance();
-        game.run();
-    }
-
-    public GaugePool getGauges() {
-        return gauges;
-    }
+  /**
+   * <b>Check whether the game should end or not.</b>
+   *
+   * <p>The game ends when one of the gauges is either empty or full.
+   */
+  public boolean endOfGame() {
+    for (Gauge gauge : gauges) if (gauge.isEmptyOrFull()) return true;
+    return false;
+  }
 
     public void run() {
         int turnCount = 0;

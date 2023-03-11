@@ -29,10 +29,4 @@ public class GaugePool extends ArrayList<Gauge> {
   public void displayGauges() {
     for (Gauge gauge : this) System.out.println(gauge);
   }
-
-  /** Check whether the game should end or not. */
-  public boolean endOfGame() {
-    for (Gauge gauge : this) if (gauge.isEmptyOrFull()) return true;
-    return false;
-  }
 }
