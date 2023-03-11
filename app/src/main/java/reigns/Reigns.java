@@ -1,4 +1,4 @@
-package main;
+package reigns;
 
 /**
  * <b>Represents the main class of the Reigns game.</b>

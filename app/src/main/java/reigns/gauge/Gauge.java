@@ -1,4 +1,4 @@
-package main.gauge;
+package reigns.gauge;
 
 /**
  * <b>Represents a gauge with a name and value.</b>

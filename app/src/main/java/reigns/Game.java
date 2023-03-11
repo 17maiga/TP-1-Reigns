@@ -1,11 +1,11 @@
-package main;
+package reigns;
 
-import main.gauge.Gauge;
-import main.gauge.GaugePool;
-import main.player.Player;
-import main.question.Effect;
-import main.question.Question;
-import main.question.QuestionPool;
+import reigns.gauge.Gauge;
+import reigns.gauge.GaugePool;
+import reigns.player.Player;
+import reigns.question.Effect;
+import reigns.question.Question;
+import reigns.question.QuestionPool;
 
 import java.util.List;
 

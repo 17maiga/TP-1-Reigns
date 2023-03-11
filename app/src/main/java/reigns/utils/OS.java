@@ -1,4 +1,4 @@
-package main.utils;
+package reigns.utils;
 
 /**
  * <b>Static class representing local operating system utils.</b>

@@ -1,9 +1,9 @@
-package main.question;
+package reigns.question;
 
 import java.util.List;
-import main.gauge.Gauge;
-import main.gauge.GaugePool;
-import main.gauge.GaugeType;
+import reigns.gauge.Gauge;
+import reigns.gauge.GaugePool;
+import reigns.gauge.GaugeType;
 
 /**
  * <b>Represents an effect on a gauge.</b>

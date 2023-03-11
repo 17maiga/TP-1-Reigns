@@ -1,7 +1,7 @@
-package main.question;
+package reigns.question;
 
 import com.google.gson.Gson;
-import main.utils.OS;
+import reigns.utils.OS;
 
 import java.io.FileReader;
 import java.io.IOException;

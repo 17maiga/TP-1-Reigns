@@ -1,4 +1,4 @@
-package main.gauge;
+package reigns.gauge;
 
 import java.util.ArrayList;
 

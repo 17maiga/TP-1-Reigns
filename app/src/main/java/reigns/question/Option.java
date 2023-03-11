@@ -1,4 +1,4 @@
-package main.question;
+package reigns.question;
 
 import java.util.List;
 import java.util.Objects;

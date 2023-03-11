@@ -1,4 +1,4 @@
-package main.player;
+package reigns.player;
 
 import java.util.Scanner;
 

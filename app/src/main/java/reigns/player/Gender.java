@@ -1,4 +1,4 @@
-package main.player;
+package reigns.player;
 
 /**
  * <b>Represents a player's gender and associated title.</b>
