@@ -36,7 +36,6 @@ public class Player {
       answer = scanner.nextInt();
     }
     gender = Gender.values()[answer - 1];
-    System.out.println(this.getReignMessage());
   }
 
   public static Player getInstance() {

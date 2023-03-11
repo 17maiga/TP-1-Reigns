@@ -44,16 +44,17 @@ public class Game {
     return false;
   }
 
-    public void run() {
-        int turnCount = 0;
-        while (!gauges.endOfGame()) {
-            turnCount++;
-            gauges.displayGauges();
-            Question question = questions.getRandomQuestion();
-            List<Effect> effects = question.ask();
-            for (Effect effect : effects)
-                effect.applyEffect();
-        }
-        System.out.println(player.getEndgameMessage(turnCount));
+  /** <b>Runs the game.</b> */
+  public void run() {
+    System.out.println(player.getReignMessage());
+    int turnCount = 0;
+    while (!endOfGame()) {
+      turnCount++;
+      gauges.displayGauges();
+      Question question = questions.getRandomQuestion();
+      List<Effect> effects = question.ask();
+      for (Effect effect : effects) effect.applyEffect();
     }
+    System.out.println(player.getEndgameMessage(turnCount));
+  }
 }
