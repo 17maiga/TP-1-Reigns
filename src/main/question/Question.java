@@ -18,10 +18,10 @@ public class Question {
     public String toString() {
         StringBuilder result = new StringBuilder("[" + character + "] " + question + " [");
         for (int i = 0; i < options.size() - 1; i++)
-            result.append(i + 1).append(": ").append(options.get(i).getLabel()).append(", ");
-        result.append(options.size()).append(": ").append(options.get(options.size() - 1).getLabel()).append("]\n");
+            result.append(i + 1).append(": ").append(options.get(i).label()).append(", ");
+        result.append(options.size()).append(": ").append(options.get(options.size() - 1).label()).append("]\n");
         for (int i = 0; i < options.size(); i++)
-            result.append(i + 1).append(": ").append(Effect.displayEffects(options.get(i).getEffects())).append("\n");
+            result.append(i + 1).append(": ").append(Effect.displayEffects(options.get(i).effects())).append("\n");
         return result.toString();
     }
 
@@ -35,6 +35,6 @@ public class Question {
             System.out.flush();
             answer = scanner.nextInt();
         }
-        return options.get(answer - 1).getEffects();
+        return options.get(answer - 1).effects();
     }
 }
