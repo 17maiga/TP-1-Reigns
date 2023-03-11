@@ -15,6 +15,14 @@ public class Effect {
         this.value = value;
     }
 
+    public static String displayEffects(List<Effect> effects) {
+        StringBuilder result = new StringBuilder();
+        for (Effect effect : effects) {
+            result.append(effect.toString()).append("; ");
+        }
+        return result.toString();
+    }
+
     public void applyEffect() {
         Gauge gauge = Game.getInstance().getGauges().getGauge(gaugeType);
         gauge.setValue(gauge.getValue() + this.value);
@@ -23,13 +31,5 @@ public class Effect {
     @Override
     public String toString() {
         return "Gauge " + gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
-    }
-
-    public static String displayEffects(List<Effect> effects) {
-        StringBuilder result = new StringBuilder();
-        for (Effect effect : effects) {
-            result.append(effect.toString()).append("; ");
-        }
-        return result.toString();
     }
 }

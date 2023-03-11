@@ -25,14 +25,20 @@ public class Game {
         this.questions = QuestionPool.getInstance();
     }
 
-    public GaugePool getGauges() {
-        return gauges;
-    }
-
     public static Game getInstance() {
         if (instance == null)
             instance = new Game();
         return instance;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to Reigns");
+        Game game = getInstance();
+        game.run();
+    }
+
+    public GaugePool getGauges() {
+        return gauges;
     }
 
     public void run() {
@@ -46,11 +52,5 @@ public class Game {
                 effect.applyEffect();
         }
         System.out.println(player.getEndgameMessage(turnCount));
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Welcome to Reigns");
-        Game game = getInstance();
-        game.run();
     }
 }
