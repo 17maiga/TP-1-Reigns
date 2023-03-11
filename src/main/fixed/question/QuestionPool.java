@@ -20,17 +20,11 @@ public class QuestionPool extends ArrayList<Question> {
         if (instance == null) {
             try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
                 instance = new Gson().fromJson(reader, QuestionPool.class);
-                instance.fetchGauges();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return instance;
-    }
-
-    private void fetchGauges() {
-        for (Question question : this)
-            question.fetchGauges();
     }
 
     public Question getRandomQuestion() {

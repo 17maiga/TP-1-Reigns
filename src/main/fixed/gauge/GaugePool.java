@@ -5,19 +5,19 @@ import java.util.List;
 
 public class GaugePool extends ArrayList<Gauge> {
     private static final List<Gauge> GAUGES = List.of(
-            new ArmyGauge(),
-            new ClergyGauge(),
-            new FinanceGauge(),
-            new PeopleGauge()
+            new Gauge(GaugeType.ARMY),
+            new Gauge(GaugeType.CLERGY),
+            new Gauge(GaugeType.FINANCE),
+            new Gauge(GaugeType.PEOPLE)
     );
 
     public GaugePool() {
         addAll(GAUGES);
     }
 
-    public Gauge getGauge(String name) {
+    public Gauge getGauge(GaugeType type) {
         for (Gauge gauge : this)
-            if (gauge.getName().equals(name))
+            if (gauge.getType().equals(type))
                 return gauge;
         return null;
     }

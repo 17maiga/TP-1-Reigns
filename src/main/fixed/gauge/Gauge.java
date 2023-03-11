@@ -6,38 +6,34 @@ package main.fixed.gauge;
  * @author Henri Saudubray / Clément Lardemelle
  * @version 1.0
  */
-public abstract class Gauge {
+public class Gauge {
     /**
      * La longueur maximale d'une jauge.
      */
     public static int gaugeLength = 50;
 
     /**
-     * Le nom de la jauge.
+     * Le type de la jauge.
      */
-    protected String name;
+    private final GaugeType type;
 
     /**
      * La valeur de la jauge.
      */
-    protected int value;
+    private int value;
 
     /**
-     * Creates a new gauge with the specified name
+     * Creates a new gauge with the specified type
      *
-     * @param name    The gauge name
+     * @param type The gauge type
      */
-    public Gauge(String name) {
-        this.name = name;
-        this.value = 15 + (int)(Math.random() * 20);
+    public Gauge(GaugeType type) {
+        this.type = type;
+        this.value = ((gaugeLength - 20) / 2) + (int) (Math.random() * 20);
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public GaugeType getType() {
+        return this.type;
     }
 
     public int getValue() {
@@ -45,15 +41,15 @@ public abstract class Gauge {
     }
 
     public void setValue(int value) {
-        this.value = Math.min(Math.max(value, 0), 50);
+        this.value = Math.min(Math.max(value, 0), gaugeLength);
     }
 
     @Override
     public String toString() {
-        return "[" + "#".repeat(value) + "_".repeat(50 - value) + "] " + name;
+        return "[" + "#".repeat(value) + "_".repeat(gaugeLength - value) + "] " + type.getName();
     }
 
     public boolean isEmptyOrFull() {
-        return value >= 50 || value <= 0;
+        return value >= gaugeLength || value <= 0;
     }
 }

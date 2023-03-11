@@ -2,39 +2,27 @@ package main.fixed.question;
 
 import main.fixed.Game;
 import main.fixed.gauge.Gauge;
+import main.fixed.gauge.GaugeType;
 
 import java.util.List;
 
 public class Effect {
-    private final String gaugeName;
-    private transient Gauge gauge;
+    private final GaugeType gaugeType;
     private final int value;
 
-    public Effect(Gauge gauge, int value) {
-        this.gaugeName = gauge.getName();
-        this.gauge = gauge;
+    public Effect(GaugeType gaugeType, int value) {
+        this.gaugeType = gaugeType;
         this.value = value;
     }
 
-    public Gauge getGauge() {
-        return gauge;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
     public void applyEffect() {
+        Gauge gauge = Game.getInstance().getGauges().getGauge(gaugeType);
         gauge.setValue(gauge.getValue() + this.value);
-    }
-
-    public void fetchGauge() {
-        this.gauge = Game.getInstance().getGauges().getGauge(this.gaugeName);
     }
 
     @Override
     public String toString() {
-        return "Gauge " + gauge.getName() + ": " + ((value > 0) ? "+" : "") + value;
+        return "Gauge " + gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
     }
 
     public static String displayEffects(List<Effect> effects) {
