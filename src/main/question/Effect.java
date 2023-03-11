@@ -1,28 +1,47 @@
 package main.question;
 
-import main.Game;
+import java.util.List;
 import main.gauge.Gauge;
 import main.gauge.GaugePool;
 import main.gauge.GaugeType;
 
-import java.util.List;
-
+/**
+ * <b>Represents an effect on a gauge.</b>
+ *
+ * <p>Each effect is a change on a gauge's value.
+ *
+ * @author Henri Saudubray / Clément Lardemelle
+ */
 public class Effect {
-    private final GaugeType gaugeType;
-    private final int value;
+  /** <b>The target gauge's type.</b> */
+  private final GaugeType gaugeType;
+  /** <b>The effect's value.</b> */
+  private final int value;
 
-    public Effect(GaugeType gaugeType, int value) {
-        this.gaugeType = gaugeType;
-        this.value = value;
-    }
+  /**
+   * <b>Creates a new effect.</b>
+   *
+   * @param gaugeType The target gauge's type.
+   * @param value The effect's value.
+   */
+  public Effect(GaugeType gaugeType, int value) {
+    this.gaugeType = gaugeType;
+    this.value = value;
+  }
 
-    public static String displayEffects(List<Effect> effects) {
-        StringBuilder result = new StringBuilder();
-        for (Effect effect : effects) {
-            result.append(effect.toString()).append("; ");
-        }
-        return result.toString();
+  /**
+   * <b>Displays a list of effects.</b>
+   *
+   * @param effects The list of effects.
+   * @return The list of effects as a string.
+   */
+  public static String displayEffects(List<Effect> effects) {
+    StringBuilder result = new StringBuilder();
+    for (Effect effect : effects) {
+      result.append(effect.toString()).append("; ");
     }
+    return result.toString();
+  }
 
   /** <b>Applies the effect on the target gauge.</b> */
   public void applyEffect() {
@@ -30,8 +49,15 @@ public class Effect {
     gauge.setValue(gauge.getValue() + this.value);
   }
 
-    @Override
-    public String toString() {
-        return "Gauge " + gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
-    }
+  /**
+   * <b>Represents the effect as a string.</b>
+   *
+   * <p>Example: "Gauge People: +10".
+   *
+   * @return A string representing the effect.
+   */
+  @Override
+  public String toString() {
+    return "Gauge " + gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
+  }
 }

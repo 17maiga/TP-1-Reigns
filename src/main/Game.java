@@ -9,12 +9,20 @@ import main.question.QuestionPool;
 
 import java.util.List;
 
+/**
+ * <b>Singleton class representing a game.</b>
+ *
+ * @author Henri Saudubray / Clément Lardemelle
+ */
 public class Game {
-
-    private static Game instance;
-    private final Player player;
-    private final GaugePool gauges;
-    private final QuestionPool questions;
+  /** <b>Singleton instance.</b> */
+  private static Game instance;
+  /** <b>The player.</b> */
+  private final Player player;
+  /** <b>The gauges.</b> */
+  private final GaugePool gauges;
+  /** <b>The questions.</b> */
+  private final QuestionPool questions;
 
   /**
    * <b>Creates a new game.</b>
@@ -28,11 +36,15 @@ public class Game {
     this.questions = QuestionPool.getInstance();
   }
 
-    public static Game getInstance() {
-        if (instance == null)
-            instance = new Game();
-        return instance;
-    }
+  /**
+   * <b>Gets the singleton instance.</b>
+   *
+   * @return The singleton instance.
+   */
+  public static Game getInstance() {
+    if (instance == null) instance = new Game();
+    return instance;
+  }
 
   /**
    * <b>Check whether the game should end or not.</b>

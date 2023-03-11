@@ -3,17 +3,39 @@ package main.question;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * <b>Represents a question.</b>
+ *
+ * <p>Each question has an associated character and list of options.
+ *
+ * @author Henri Saudubray / Clément Lardemelle
+ */
 public class Question {
+  /** <b>The question's text.</b> */
   private final String question;
+  /** <b>The question's associated character.</b> */
   private final String character;
+  /** <b>The question's options.</b> */
   private final List<Option> options;
 
+  /**
+   * <b>Creates a new question.</b>
+   *
+   * @param question The question's text.
+   * @param character The question's associated character.
+   * @param options The question's options.
+   */
   public Question(String question, String character, List<Option> options) {
     this.question = question;
     this.character = character;
     this.options = options;
   }
 
+  /**
+   * <b>Represents the question and its options as a string.</b>
+   *
+   * @return A string representing the question and its options.
+   */
   @Override
   public String toString() {
     StringBuilder result = new StringBuilder("[" + character + "] " + question + " [");
@@ -33,6 +55,11 @@ public class Question {
     return result.toString();
   }
 
+  /**
+   * <b>Asks the question to the player.</b>
+   *
+   * @return The list of effects associated with the chosen option.
+   */
   public List<Effect> ask() {
     System.out.println(this);
     System.out.flush();
