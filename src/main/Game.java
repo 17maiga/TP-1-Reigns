@@ -1,6 +1,7 @@
 package main;
 
 import main.gauge.GaugePool;
+import main.player.Player;
 import main.question.Effect;
 import main.question.Question;
 import main.question.QuestionPool;
@@ -44,7 +45,7 @@ public class Game {
             for (Effect effect : effects)
                 effect.applyEffect();
         }
-        System.out.println(player.getName() + " lost! Their reign lasted " + turnCount + " turns.");
+        System.out.println(player.getEndgameMessage(turnCount));
     }
 
     public static void main(String[] args) {
