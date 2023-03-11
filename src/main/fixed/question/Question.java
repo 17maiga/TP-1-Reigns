@@ -6,43 +6,35 @@ import java.util.Scanner;
 public class Question {
     private final String question;
     private final String character;
-    private final List<Effect> left;
-    private final List<Effect> right;
+    private final List<Option> options;
 
-    public Question(String question, String character, List<Effect> left, List<Effect> right) {
+    public Question(String question, String character, List<Option> options) {
         this.question = question;
         this.character = character;
-        this.left = left;
-        this.right = right;
+        this.options = options;
     }
 
     @Override
     public String toString() {
-        String result = "[" + character + "] " + question + " [L: " + left + ", R: " + right + "]\n";
-        result += "Left:  " + Effect.displayEffects(left) + "\n";
-        result += "Right: " + Effect.displayEffects(right) + "\n";
-        return result;
-    }
-
-    public void fetchGauges() {
-        for (Effect effect : left) {
-            effect.fetchGauge();
-        }
-        for (Effect effect : right) {
-            effect.fetchGauge();
-        }
+        StringBuilder result = new StringBuilder("[" + character + "] " + question + " [");
+        for (int i = 0; i < options.size() - 1; i++)
+            result.append(i + 1).append(": ").append(options.get(i).getLabel()).append(", ");
+        result.append(options.size()).append(": ").append(options.get(options.size() - 1).getLabel()).append("]\n");
+        for (int i = 0; i < options.size(); i++)
+            result.append(i + 1).append(": ").append(Effect.displayEffects(options.get(i).getEffects())).append("\n");
+        return result.toString();
     }
 
     public List<Effect> ask() {
         System.out.println(this);
         System.out.flush();
         Scanner scanner = new Scanner(System.in);
-        String answer = "";
-        while (!answer.equals("L") && !answer.equals("R")) {
-            System.out.println("Enter your choice (L or R): ");
+        int answer = 0;
+        while (answer < 1 || answer > options.size()) {
+            System.out.println("Enter your choice (1, 2, ...): ");
             System.out.flush();
-            answer = scanner.nextLine();
+            answer = scanner.nextInt();
         }
-        return answer.equals("L") ? left : right;
+        return options.get(answer - 1).getEffects();
     }
 }
