@@ -1,0 +1,150 @@
+[
+  {
+    "character": "Hand of the King",
+    "question": "The people want you to release the prisoners",
+    "options": [
+      {
+        "label": "Yes",
+        "effects": [
+          {
+            "gaugeType": "ARMY",
+            "value": -5
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "label": "No",
+        "effects": [
+          {
+            "gaugeType": "PEOPLE",
+            "value": -7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "character": "Farmer",
+    "question": "There is nothing left to eat",
+    "options": [
+      {
+        "label": "Import food",
+        "effects": [
+          {
+            "gaugeType": "FINANCE",
+            "value": -5
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "label": "Do nothing",
+        "effects": [
+          {
+            "gaugeType": "PEOPLE",
+            "value": -5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "character": "Priest",
+    "question": "The gods are angry",
+    "options": [
+      {
+        "label": "Sacrifice someone",
+        "effects": [
+          {
+            "gaugeType": "CLERGY",
+            "value": 5
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": -3
+          }
+        ]
+      },
+      {
+        "label": "Do nothing",
+        "effects": [
+          {
+            "gaugeType": "CLERGY",
+            "value": -5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "character": "Hand of the King",
+    "question": "King Baratheon is assembling his army",
+    "options": [
+      {
+        "label": "Help him",
+        "effects": [
+          {
+            "gaugeType": "ARMY",
+            "value": 3
+          },
+          {
+            "gaugeType": "FINANCE",
+            "value": -3
+          }
+        ]
+      },
+      {
+        "label": "Remain neutral",
+        "effects": [
+          {
+            "gaugeType": "CLERGY",
+            "value": -3
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "character": "Farmer",
+    "question": "This year's harvest was very good",
+    "options": [
+      {
+        "label": "Tax heavily",
+        "effects": [
+          {
+            "gaugeType": "FINANCE",
+            "value": 10
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": -5
+          }
+        ]
+      },
+      {
+        "label": "Tax lightly",
+        "effects": [
+          {
+            "gaugeType": "FINANCE",
+            "value": 1
+          },
+          {
+            "gaugeType": "PEOPLE",
+            "value": -3
+          }
+        ]
+      }
+    ]
+  }
+]

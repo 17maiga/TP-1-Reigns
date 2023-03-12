@@ -1,11 +1,7 @@
 package reigns.question;
 
-import com.google.gson.Gson;
-import reigns.utils.OS;
-
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
+import reigns.OS;
 
 /**
  * <b>Static class representing a list of questions.</b>
@@ -15,9 +11,6 @@ import java.util.ArrayList;
  * @author Henri Saudubray / Clément Lardemelle
  */
 public class QuestionPool extends ArrayList<Question> {
-  /** <b>Path to the JSON file containing the questions.</b> */
-  private static final String JSON_FILE_PATH = OS.getConfigFolder() + "questions.json";
-
   /** <b>Singleton instance.</b> */
   private static QuestionPool instance;
 
@@ -33,11 +26,7 @@ public class QuestionPool extends ArrayList<Question> {
    */
   public static QuestionPool getInstance() {
     if (instance == null) {
-      try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
-        instance = new Gson().fromJson(reader, QuestionPool.class);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      instance = OS.extractQuestions();
     }
     return instance;
   }
