@@ -58,6 +58,6 @@ public class Effect {
    */
   @Override
   public String toString() {
-    return "Gauge " + gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
+    return gaugeType.getName() + ": " + ((value > 0) ? "+" : "") + value;
   }
 }
